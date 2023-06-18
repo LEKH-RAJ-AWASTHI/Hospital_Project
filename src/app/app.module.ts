@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { MasterPageComponent } from './app.componentMasterPage';
+import { PatientComponent } from './app.componentPatient';
+import { HomeComponent } from './app.componentHome';
 
 @NgModule({
   declarations: [
-    AppComponent
+    MasterPageComponent,
+    PatientComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -15,6 +18,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [MasterPageComponent]
 })
 export class AppModule { }

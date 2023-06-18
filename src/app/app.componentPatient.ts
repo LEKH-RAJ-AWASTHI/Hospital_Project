@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { Patient } from './app.model';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: './app.componentPatient.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class PatientComponent {
   patient: Patient = new Patient();
   patientArr: Array<Patient> = new Array<Patient>();
   isEditing: boolean = false;

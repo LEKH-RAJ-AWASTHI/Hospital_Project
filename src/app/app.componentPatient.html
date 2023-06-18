@@ -1,4 +1,4 @@
-<h1>Hello World! This is my first Angular App</h1>
+<h1>You Can Add Update and Delete Patient from here</h1>
 
 <div>
   <!-- <form action="javascript:void(0)"> -->
@@ -16,10 +16,8 @@
 
   <!-- {{2+2}} -->
   <!-- Any expressions can be written inside the double curly braces -->
-  <br><br>
   <!-- {{patient.name}} is {{patient.age}} years old. -->
 
-  <br><br>
   <table border="1">
     <tr>
       <td>S.No</td>
@@ -32,7 +30,7 @@
       <td>{{patient.name}}</td>
       <td>{{patient.age}}</td>
       <td>
-          <input type="button" value="Edit" (click)="editPatient(patient)">
-          <input type="button" value="Delete" (click)="deletePatient(patient)">
+          <a href="javascript:void(0)" (click)="editPatient(patient)">Edit</a>
+          <a href="javascript:void(0)" (click)="deletePatient(patient)">Delete</a>
       </td>
   </table>
