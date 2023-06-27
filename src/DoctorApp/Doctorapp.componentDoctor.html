@@ -1,0 +1,36 @@
+<h1>You Can Add Update and Delete Doctor from here</h1>
+
+<div>
+  <!-- <form action="javascript:void(0)"> -->
+
+    Name: <input type="text" name="" id="" [(ngModel)]="doctor.name">
+    <br>
+    <br>
+    Age: <input type="number" name="" id="" [(ngModel)]="doctor.age">
+    <br><br>
+    <input type="button" value="Add/Update" name="" id="" (click)="AddOrUpdateDoctor()" />
+  <!-- </form> -->
+</div>
+
+
+
+  <!-- {{2+2}} -->
+  <!-- Any expressions can be written inside the double curly braces -->
+  <!-- {{patient.name}} is {{patient.age}} years old. -->
+
+  <table border="1">
+    <tr>
+      <td>S.No</td>
+      <td>Name</td>
+      <td>Age</td>
+      <td>Actions</td>
+    </tr>
+    <tr *ngFor="let patient of doctorArr; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{patient.name}}</td>
+      <td>{{patient.age}}</td>
+      <td>
+          <a href="javascript:void(0)" (click)="editDoctor(patient)">Edit</a>
+          <a href="javascript:void(0)" (click)="deleteDoctor(patient)">Delete</a>
+      </td>
+  </table>

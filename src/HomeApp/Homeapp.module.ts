@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { HomeRoutingModule } from './Homeapp-routing.module';
 import { FormsModule } from '@angular/forms';
-import { MasterPageComponent } from './app.componentMasterPage';
-import { PatientComponent } from './app.componentPatient';
-import { HomeComponent } from './app.componentHome';
+import { MasterPageComponent } from './Homeapp.componentMasterPage';
+import { HomeComponent } from './Homeapp.componentHome';
 
 @NgModule({
   declarations: [
     MasterPageComponent,
-    PatientComponent,
     HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    HomeRoutingModule,
     FormsModule
   ],
   providers: [],

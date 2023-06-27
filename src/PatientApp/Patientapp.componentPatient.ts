@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Patient } from './app.model';
+import { Patient } from './Patientapp.model';
 
 @Component({
-  templateUrl: './app.componentPatient.html',
-  styleUrls: ['./app.component.css'],
+  templateUrl: './Patientapp.componentPatient.html',
+  styleUrls: ['./Patientapp.component.css'],
 })
 export class PatientComponent {
   patient: Patient = new Patient();
