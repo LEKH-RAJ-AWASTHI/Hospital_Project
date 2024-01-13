@@ -1,0 +1,36 @@
+  <h1>You Can Add Update and Delete Patient from here</h1>
+
+  <div class="form">
+      <form [formGroup]="patient.formPatientGroup">
+        <!-- {{patient.formPatientGroup.valid}} -->
+        Name: <input formControlName="pnameControl" type="text" name="" id="" [(ngModel)]="patient.name">
+        <div class="form-err" [hidden]="!(patient.formPatientGroup.controls['pnameControl'].hasError('required'))">* Name is required</div>
+        <br>
+        Code: <input formControlName="pcodeControl" type="text" name="" id="" [(ngModel)]="patient.code">
+        <div class="form-err" [hidden]="!(patient.formPatientGroup.controls['pcodeControl'].hasError('required'))">* Code is required</div>
+        <div class="form-err" [hidden]="!(patient.formPatientGroup.controls['pcodeControl'].hasError('pattern'))">* pattern must be B0001, C2222, F1234</div>
+        <br>
+        Age: <input [ngModelOptions]="{standalone: true}" type="number" name="" id="" [(ngModel)]="patient.age">
+        <br><br>
+        <input [disabled]="!(patient.formPatientGroup.valid)" type="button" value="Add/Update" name="" id="" (click)="Submit()" />
+      </form>
+  </div>
+
+  <table border="1">
+    <tr>
+      <td>S.No</td>
+      <td>Name</td>
+      <td>Code</td>
+      <td>Age</td>
+      <td>Actions</td>
+    </tr>
+    <tr *ngFor="let patient of patientArr; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{patient.name}}</td>
+      <td>{{patient.code}}</td>
+      <td>{{patient.age}}</td>
+      <td>
+          <a href="javascript:void(0)" (click)="editPatient(patient)">Edit</a>
+          <a href="javascript:void(0)" (click)="deletePatient(patient)">Delete</a>
+      </td>
+  </table>

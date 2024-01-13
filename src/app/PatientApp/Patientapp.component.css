@@ -27,7 +27,7 @@ h1, h3{
   display: flex;
   justify-content: center;
 }
-div, table{
+.form, table{
   margin: 20px
 }
 button{
@@ -37,4 +37,11 @@ button{
 }
 td a{
   margin:5px;
+}
+.form-err{
+
+  color: red;
+  font-weight: bold;
+  margin:0;
+  padding:0;
 }

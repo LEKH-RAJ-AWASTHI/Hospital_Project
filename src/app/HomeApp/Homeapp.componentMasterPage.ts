@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Patient } from '../PatientApp/Patientapp.model';
+import { BaseLogger } from '../common/logger';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,7 @@ import { Patient } from '../PatientApp/Patientapp.model';
   styleUrls: ['./Homeapp.component.css'],
 })
 export class MasterPageComponent {
-
+  constructor(log:BaseLogger) {
+    log.Log("Error in Master Component");
+  }
 }
