@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
-import { PatientRoutingModule } from './Patientapp-routing.module';
+import { LoginRoutingModule } from './login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { PatientComponent } from './Patientapp.componentPatient';
+import { LoginComponent } from './login.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    PatientComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
-    PatientRoutingModule,
+    LoginRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [PatientComponent]
+  bootstrap: [LoginComponent]
 })
-export class PatientModule { }
+export class LoginModule { }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Patient } from './Patientapp.model';
-import { BaseLogger } from '../common/logger';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Config } from '../common/Common-config';
+import { MyToken } from '../common/Common-token';
 
 @Component({
   templateUrl: './Patientapp.componentPatient.html',
@@ -12,16 +12,45 @@ export class PatientComponent {
   patient: Patient = new Patient();
   patientArr: Array<Patient> = new Array<Patient>();
   isEditing: boolean = false;
+  httpOptions: any;
+  token: string = this.tk.value;
+
+
+  constructor(public http: HttpClient, public config: Config, public tk: MyToken) {
+    // Initialize httpOptions in the constructor
+    console.log("Token object:", this.token);
+
+
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        // "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiTGVraCIsInN1YiI6Ikxla2giLCJlbWFpbCI6IiIsIklzQWRtaW4iOiJUcnVlIiwianRpIjoiYzc2YjMyZjktNjNjNC00NjQwLTgzMTUtNTljNmMzM2ZmODE5IiwiZXhwIjoxNzA1MzcyNjg2LCJpc3MiOiJRdWVzdHBvbmQiLCJhdWQiOiJCcm93c2VyQ2xpZW50cyJ9.unRrP9qVdu9IeKlXWw4PQfGQCWEbVvfKlkWfByE2GF4`,  // Use this.tk.value directly
+        "Authorization": "Bearer " + this.token // Use this.tk.value directly
+      }),
+    };
+
+    this.http.get(this.config.apiUrl + "patient", this.httpOptions).subscribe(
+      (res) => this.success(res),
+      (res) => this.error(res)
+    );
+  }
 
     Submit(){
+      var header_object = new HttpHeaders({
+        "Content-Type": "application/json",
+        "Authorization" : "Bearer "+this.tk.value,
+      });
+      const httpOptions= {
+        headers: header_object
+      }
       if (this.patient.id == 0) { //new patient
         var patDTO:any= {};
         patDTO.name=this.patient.name;
         patDTO.age=this.patient.age;
         patDTO.code=this.patient.code;
         var observable= this.http.
-        post(this.config.apiUrl,
-        patDTO);
+        post(this.config.apiUrl+"patient",
+        patDTO, httpOptions);
         observable.subscribe(res=>this.success(res),
         res=>this.error(res));
       }
@@ -31,7 +60,7 @@ export class PatientComponent {
         patDTO.name=this.patient.name;
         patDTO.age=this.patient.age;
         patDTO.code=this.patient.code;
-        var observable = this.http.put(this.config.apiUrl, patDTO);
+        var observable = this.http.put(this.config.apiUrl+"patient",patDTO, httpOptions);
 
         observable.subscribe(res=>this.success(res),
         res=>this.error(res));
@@ -49,9 +78,6 @@ export class PatientComponent {
       console.log("Error in the posting data"+res);
     }
 
-  constructor(public http: HttpClient, public config:Config) {
-    this.http.get(this.config.apiUrl).subscribe(res=>this.success(res),res=>this.error(res));
-  }
 
   editPatient(patientSelected: Patient) {
     this.patient = new Patient();

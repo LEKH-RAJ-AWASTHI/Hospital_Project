@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BaseLogger } from '../common/logger';
 
 
 @Component({
@@ -7,7 +6,5 @@ import { BaseLogger } from '../common/logger';
   styleUrls: ['./Homeapp.component.css'],
 })
 export class HomeComponent {
-  constructor(log:BaseLogger) {
-    log.Log("Error in Home Component");
-  }
+
 }
